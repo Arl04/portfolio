@@ -47,7 +47,7 @@ const $$ = (sel) => document.querySelectorAll(sel);
   const el = $('#typewriter');
   if (!el) return;
 
-  const roles = ['Développeuse', 'DevOps Engineer', 'Passionnée de Tech'];
+  const roles = ['DevOps Engineer', 'Backend Developer', 'Cloud Infrastructure Expert', 'Fintech Specialist'];
   let roleIndex  = 0;
   let charIndex  = 0;
   let isDeleting = false;
@@ -178,7 +178,18 @@ const $$ = (sel) => document.querySelectorAll(sel);
   updateActive();
 })();
 
-/* ── 7. Validation du formulaire de contact ──────────────────── */
+/* ── 8. Calcul dynamique de l'âge ────────────────────────────── */
+(function initAge() {
+  const el = $('#age-display');
+  if (!el) return;
+
+  const birthDate = new Date(2001, 3, 4); // 04 Avril 2001
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+  el.textContent = age;
+})();
 (function initContactForm() {
   const form    = $('#contact-form');
   if (!form) return;
